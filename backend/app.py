@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import uuid
 import os
 import json
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Path to store posts
 POSTS_FILE = 'posts.json'
@@ -41,4 +43,5 @@ def posts():
     return jsonify(posts), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use PORT environment variable for deployment
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
