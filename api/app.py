@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 import os
 import subprocess
 import shutil
+import re
 
 app = Flask(__name__)
 
@@ -11,6 +12,11 @@ def run_command(command):
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     return result.stdout + result.stderr
 
+def is_valid_url(url):
+    """Validates the Git repository URL."""
+    regex = r'^(https?://|git@)[\w.-]+(:|/)[\w.-]+(\.git)?$'
+    return re.match(regex, url) is not None
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     output = ""
@@ -18,6 +24,9 @@ def index():
         # Get repo URL and main script name from the form
         repo_url = request.form.get('repo_url')
         main_script = request.form.get('main_script')
+
+        if not is_valid_url(repo_url):
+            return render_template('index.html', output="Error: Invalid repository URL.")
 
         # Define a temporary directory for cloning
         repo_dir = "temp_repo"
