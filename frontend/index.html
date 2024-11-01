@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anonymous Twitter Clone</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Anonymous Posts</h1>
-        <form id="postForm">
-            <textarea id="content" placeholder="What's on your mind?" required></textarea>
-            <input type="text" id="fileLink" placeholder="File link (optional)">
-            <button type="submit">Post</button>
-        </form>
-        <div id="feed"></div>
+        <header>
+            <h1>Anonymous Twitter Clone</h1>
+        </header>
+        
+        <main>
+            <section id="post-form-section">
+                <h2>Share Something Anonymously</h2>
+                <form id="postForm">
+                    <textarea id="content" placeholder="What's on your mind?" required></textarea>
+                    <input type="text" id="fileLink" placeholder="Image/Video/File link (optional)">
+                    <button type="submit">Post</button>
+                </form>
+            </section>
+            
+            <section id="feed">
+                <h2>Recent Posts</h2>
+                <div id="postsContainer">
+                    <!-- Posts will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 Anonymous Twitter Clone</p>
+        </footer>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
