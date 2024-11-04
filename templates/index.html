@@ -1,88 +1,958 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run Git Repository Script</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Монетки</title>
+  <style>
+
+    .container228 {
+      display: flex;
+      height: var(--container-height);
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      border: 5px solid transparent;
+      background: linear-gradient(to right, #ffffff, #b4b4b4);
+      background-clip: padding-box, border-box;
+      margin-top: 100px;
+      border-radius: 14px;
+
+    }
+    
+    .button228 {
+      background-color: transparent;
+      border-radius: 5px;
+      height: var(--button-height);
+      cursor: pointer;
+      margin: 0 5px;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      transition: brightness 0.2s;
+ 
+    }
+    
+    .button228 img {
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      transition: transform 0.2s;
+      border-radius: 10px;
+
+    }
+    
+    .button228:hover img {
+      transform: scale(1.1);
+    }
+    
+    .button228-text {
+      margin-top: 2.5px;
+      font-size: 15px;
+      color: rgb(0, 0, 0);
+
+
+    }
+    
+    .mini-buttons {
+      display: none;
+      flex-direction: row;
+      margin-bottom: 1px;
+    }
+    
+    .mini-button {
+      background-color: #59a9c2;
+      border: none;
+      border-radius: 5px;
+      padding: 2px 5px;
+      margin: 0 2px;
+      cursor: pointer;
+      color: white;
+      transition: filter 0.2s;
+      height: auto;
+    }
+    
+    body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, rgb(50, 235, 13), rgb(0, 0, 0));
+            transition: background 0.5s ease;
+            user-select: none;
+            overflow: hidden;
+            color: rgb(255, 255, 255);
+            font-weight: 550;
         }
-        .container {
-            width: 80%;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
+    
+
+    @font-face {
+    font-family: 'Rostov';
+    src: url('FredokaOne-Regular.ttf') format('truetype');
+}
+
+
+
+
+
+    #message-container {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .error-message {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    
+    .success-message {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #coin {
+      font-size: 24px;
+      margin-bottom: 93px;
+      transition: color 0.5s ease;
+      margin-top: -px;
+    }
+    
+    #upgradeInfo {
+      transition: color 0.5s ease;
+      margin-bottom: -px;
+    }
+    
+    img {
+            width: 250px;
+            top: 40%;
             cursor: pointer;
-            margin-top: 20px;
+            outline: none;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.1s;
         }
-        button:hover {
-            background-color: #45a049;
-        }
-        pre {
-            background-color: #eee;
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto;
-            max-height: 300px;
-            margin-top: 20px;
-            white-space: pre-wrap;
-            color: #333;
-        }
-    </style>
+    
+    #coinImage:active {
+      transform: scale(0.9);
+    }
+    
+    img active {
+      box-shadow: 2px 2px 5px #fc894d;
+    }
+    
+    button,
+    .clickc,
+    .thema {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+      margin: 5px;
+      /* Уменьшен отступ между кнопками */
+      max-width: 90%;
+      box-sizing: border-box;
+    }
+    
+    .clickc {
+      margin-top: 410px;
+      margin-right: 0;
+    }
+    
+    .thema {
+      margin-top: -390px;
+      margin-left: 320px;
+    }
+    
+    button:hover {
+      background-color: #555;
+    }
+    
+    #codeMenu {
+      position: absolute;
+      margin-left: 20px;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      display: none;
+      height: 135px;
+      transition: background 0.5s ease;
+    }
+    
+    #codeMenu::after {
+      content: "Коды:\AWORK_CODES (+10К 🥥)";
+      display: block;
+      margin-top: 0px;
+      text-align: center;
+      white-space: pre-line;
+      font-size: 18px;
+      animation: rainbow 5s linear infinite;
+    }
+    
+    #codeInput {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-width: 90%;
+    }
+    
+    #codeButton,
+    #codeSubmit {
+      padding: 10px 10px;
+      margin-top: 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+      /* Уменьшен отступ между кнопками */
+      max-width: 90%;
+    }
+    
+    #inventory,
+    .shop1,
+    .inventory1 {
+      position: absolute;
+      top: 150;
+      left: 50%;
+      top: 50.5%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      padding: 4px;
+      border-radius: 10px;
+      z-index: 1;
+      display: none;
+    }
+    
+    .item {
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .item img {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .item span {
+      display: block;
+      font-size: 12px;
+    }
+    
+    .skin1 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    
+    .skin2 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    
+    .skin3 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    
+    .skin4 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .skin5 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .skin6 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .skin7 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .skin8 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .skin9 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .skin10 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .skin11 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .skin12 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .skin13 {
+      width: 50px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    
+    .message-box1 {
+      margin: 10px;
+      display: none;
+    }
+    
+    .reward {
+      margin-top: 20px;
+      font-size: 24px;
+      color: green;
+      border-radius: 14px;
+    }
+    
+    #level-bar {
+      width: 300px;
+      height: 20px;
+      background: #ccc;
+      margin: 10px;
+      border-radius: 7px;
+    }
+    
+    #level-progress {
+      height: 100%;
+      background: #494b49;
+      width: 0;
+      border-radius: 7px;
+    }
+    
+    .coin1 {
+      position: absolute;
+      animation: appear 1s ease-in-out;
+    }
+    
+    @keyframes appear {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+    
+    #taskContainer {
+      display: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #8b8b8b, #ffffff);
+      padding: 20px;
+      width: 300px;
+      position: fixed;
+      /* Зафиксированное положение */
+      top: 50%;
+      /* Центр по вертикали */
+      left: 50%;
+      /* Центр по горизонтали */
+      transform: translate(-50%, -50%);
+      /* Центрируем с учетом ширины и высоты */
+      z-index: 1000;
+      /* Убедитесь, что контейнер находится выше других элементов */
+    }
+
+
+    #level {
+  color: rgb(255, 255, 255);
+  height: -50px;
+}
+
+
+
+.item-menu1 {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 10; /* Убедитесь, что меню отображается поверх других элементов */
+}
+
+
+
+#tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  display: none;
+  z-index: 10000000;
+}
+#closeTooltipButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+
+.tooltip {
+  position: absolute;
+  padding: 15px; /* Увеличенный отступ */
+  border: 3px solid; /* Увеличенная толщина рамки */
+  border-image: linear-gradient(to right, #363636, #4b4f53) 1 1; /* Градиентная рамка */
+  background: linear-gradient(to bottom, #c1dde9, #d9e1e6); /* Градиентный фон */
+  color: rgb(0, 0, 0); /* Белый текст */
+  display: none;
+  z-index: 1000000; /* Лучше использовать более конкретный z-index, если возможно */
+}
+
+
+
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Run Git Repository Script</h1>
-        <form method="post">
-            <label for="repo_url">Repository URL:</label>
-            <input type="text" id="repo_url" name="repo_url" placeholder="Enter the GitHub repo URL" required>
-
-            <label for="main_script">Main Script Name:</label>
-            <input type="text" id="main_script" name="main_script" placeholder="Enter the main script filename" required>
-
-            <button type="submit">Clone and Run Script</button>
-        </form>
-
-        {% if output %}
-            <h2>Output:</h2>
-            <pre>{{ output }}</pre>
-        {% endif %}
+  <div id="message-container"></div>
+  <div id="coin"> 🥥0</div>
+  <img id="coinImage" src="image.png" >
+  <div id="errorMessage" style="color: red; font-weight: bold; margin-top: 10px;"></div>
+  <div id="errorMessage" style="color: red; font-weight: bold; margin-top: 10px;"></div>
+  <div id="level-bar">
+    <div id="level-progress"></div>
+  </div>
+  <div id="level" class="CLASS">Начинающий кокосомен</div>
+  <div id="inventory">
+    <h2 id="TEXT">Инвентарь</h2>
+    <div id="items"></div>
+    <div id="tooltip">
+      <button id="closeTooltipButton">&times;</button>
     </div>
+  </div>
+  <div class="container228">
+    <div class="button228" onclick="toggleMiniButtons(this)">
+      <img src="image.png" alt="Меню" draggable="false">
+      <div class="button228-text">Кокос</div>
+    </div>
+    <div class="button228" onclick="toggleMiniButtons(this)">
+      <img src="podarok.png" alt="Подарки дня" id="dailyGift" onclick="getDailyGift()" draggable="false">
+      <div class="button228-text">Подарки</div>
+    </div>
+    <div class="button228" onclick="toggleMiniButtons(this)">
+      <img src="magaz.png" alt="ПРОкачка" draggable="false">
+      <div class="button228-text">Магазин</div>
+      <div class="mini-buttons">
+        <button class="mini-button" id="prokachka">ПРОкачка</button>
+        <button class="mini-button" id="shopButton1">Скины</button>
+      </div>
+    </div>
+    <div class="button228" onclick="toggleMiniButtons(this)">
+      <img src="kvest.png" alt="Задания" id="taskButton" draggable="false">
+      <div class="button228-text">Квесты</div>
+    </div>
+    <div class="button228" onclick="toggleMiniButtons(this)">
+      <img src="inven.png" alt="Инвентарь" draggable="false">
+      <div class="button228-text">Рюкзак</div>
+      <div class="mini-buttons">
+        <button class="mini-button" id="inventoryButton">Предметы</button>
+        <button class="mini-button" id="inventoryButton1">Скины</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="taskContainer">
+    <h2>Задания</h2>
+    <p>Подпишись на Телеграм</p>
+    <button class="taskButton1" data-url="https://t.me/CoconutClicker" data-id="1">Тык!</button>
+    <p>Подпишись на Ютуб</p>
+    <button class="taskButton2" data-url="https://www.youtube.com/@CocounatCoin" data-id="2">Тык!</button>
+    <p>Подпишись на X</p>
+    <button class="taskButton3" data-url="https://x.com/Cocounat_?s=09" data-id="3">Тык!</button>
+  </div>
+
+  <div class="shop1" id="shop1">
+    <h2>Магазин</h2>
+    <img src="skin1.png" class="skin1" data-price="10000" alt="Skin 1" draggable="false">
+    <img src="skin2.png" class="skin2" data-price="10000" alt="Skin 2" draggable="false">
+    <img src="skin3.png" class="skin3" data-price="1000000" alt="Skin 3" draggable="false">
+    <img src="skin4.png" class="skin4" data-price="1000" alt="Skin 4" draggable="false">
+
+    
+    
+    <img src="skin9.png" class="skin9" data-price="100000" alt="Skin 9" draggable="false">
+    <img src="skin10.png" class="skin10" data-price="777777" alt="Skin 10" draggable="false">
+    <img src="skin11.png" class="skin11" data-price="1000000" alt="Skin 11" draggable="false">
+    <img src="skin12.png" class="skin12" data-price="1000000000" alt="Skin 12" draggable="false">
+    <img src="skin13.png" class="skin13" data-price="1000" alt="Skin 13" draggable="false">
+    <div class="message-box1" id="messageBox1"></div>
+    <button id="closeShopButton1">Закрыть магазин</button>
+  </div>
+
+  <div class="inventory1" id="inventory1">
+    <h2>Ваш Инвентарь</h2>
+    <div id="inventoryDisplay1"></div>
+    <button id="closeInventoryButton1">Закрыть инвентарь</button>
+  </div>
+  <script>
+    function saveCoins() {
+      localStorage.setItem('coinCount', coinCount);
+      localStorage.setItem('clickValue', clickValue);
+      localStorage.setItem('upgradePrice', upgradePrice); // Сохраняем цену прокачки
+      localStorage.setItem('upgradePrice2', upgradePrice2); // Сохраняем цену прокачки
+      localStorage.setItem('codeUsed1', codeUsed1);
+      localStorage.setItem('codeUsed2', codeUsed2);
+      localStorage.setItem('codeUsed3', codeUsed3);
+      localStorage.setItem('codeUsed4', codeUsed4);
+      localStorage.setItem('codeUsed5', codeUsed5);
+      localStorage.setItem('codeUsed6', codeUsed6);
+      localStorage.setItem('codeUsed7', codeUsed7);
+      localStorage.setItem('skinbuying1', skinbuying1);
+      localStorage.setItem('items', JSON.stringify(items));
+      localStorage.setItem('rare', rare);
+      localStorage.setItem('epic', epic);
+      localStorage.setItem('mythic', mythic);
+      localStorage.setItem('legendary', legendary);
+      localStorage.setItem('secret', secret);
+      localStorage.setItem('level', levelDisplay);
+      localStorage.setItem('level-progress', levelProgress);
+    }
+
+    function loadCoins() {
+      coinCount = parseFloat(localStorage.getItem('coinCount')) || 0;
+      clickValue = parseFloat(localStorage.getItem('clickValue')) || 1;
+      upgradePrice = parseInt(localStorage.getItem('upgradePrice')) || 100; // Загружаем цену прокачки
+      upgradePrice2 = parseInt(localStorage.getItem('upgradePrice2')) || 500; // Загружаем цену второй прокачки
+      codeUsed1 = localStorage.getItem('codeUsed1') === 'true' || false;
+      codeUsed2 = localStorage.getItem('codeUsed2') === 'true' || false;
+      codeUsed3 = localStorage.getItem('codeUsed3') === 'true' || false;
+      codeUsed4 = localStorage.getItem('codeUsed4') === 'true' || false;
+      codeUsed5 = localStorage.getItem('codeUsed5') === 'true' || false;
+      codeUsed6 = localStorage.getItem('codeUsed6') === 'true' || false;
+      codeUsed7 = localStorage.getItem('codeUsed7') === 'true' || false;
+      skinbuying = localStorage.getItem('codeUsed7') === 'true' || false;
+      localStorage.setItem('skinbuying', skinbuying);
+      coinDisplay.textContent = `🥥${coinCount.toFixed(0)}`;
+      const storedItems = localStorage.getItem('items');
+      return storedItems ? JSON.parse(storedItems) : [];
+      rare = parseFloat(localStorage.getItem('rare')) || 0.01;
+      epic = parseFloat(localStorage.getItem('epic')) || 0.001;
+      mythic = parseFloat(localStorage.getItem('mythic')) || 0.0001;
+      legendary = parseFloat(localStorage.getItem('legendary')) || 0.00001;
+      secret = parseFloat(localStorage.getItem('secret')) || 0.000001;
+      levelDisplay = localStorage.getItem('level');
+      levelProgress = localStorage.getItem('level-progress');
+
+      function updateInventoryDisplay1() {
+        inventoryDisplay1.innerHTML = '';
+        skins.forEach(skinSrc => {
+          const img = document.createElement('img');
+          img.src = skinSrc;
+          img.className = 'skin'; // Позволяем использовать один класс
+          img.style.width = '50px';
+          img.addEventListener('click', () => {
+            document.getElementById('coinImage').src = skinSrc;
+          });
+          inventoryDisplay1.appendChild(img);
+        });
+      }
+    }
+
+    const levelData = [
+  { threshold: 200, level: 'Начинающий кокосомен' },
+  { threshold: 10000, level: 'Собиратель кокосов' },
+  { threshold: 100000, level: 'Кокосовый искатель' },
+  { threshold: 500000, level: 'Деревенский кокосомен' },
+  { threshold: 2000000, level: 'Кокосовый самородок' },
+  { threshold: 10000000, level: 'Кокосовое счастье' },
+  { threshold: 20000000, level: 'Кокосовый капиталист' },
+  { threshold: 50000000, level: 'Торговец кокосами' },
+  { threshold: 150000000, level: 'Магнат кокосов' },
+  { threshold: 1000000000, level: 'Волшебник кокосов' },
+  { threshold: 5000000000, level: 'Кокосовый император' },
+  { threshold: 10000000000, level: 'Кокосовый шейх' },
+  { threshold: Infinity, level: 'Мастер кокосов' } // Последний уровень
+];
+
+function updateLevel() {
+  let coinCount = parseInt(localStorage.getItem('coinCount')) || 0; // Загрузка из localStorage
+
+  let currentLevelData = levelData.find(level => coinCount < level.threshold);
+
+  let level = currentLevelData.level;
+  let progress = 0;
+
+  if (coinCount >= 200) { // Только если выше начального уровня
+    const prevLevelData = levelData.find(level => level.threshold <= coinCount && level.threshold !== currentLevelData.threshold) || levelData[0];
+    progress = Math.min((coinCount - prevLevelData.threshold) / (currentLevelData.threshold - prevLevelData.threshold) * 100, 100);
+  }
+
+
+  levelDisplay.textContent = `${level}`;
+  levelProgress.style.width = progress + '%';
+
+  localStorage.setItem('coinCount', coinCount); // Сохранение в localStorage
+}
+
+    let coinCount = 0;
+    let clickValue = 1;
+    let upgradePrice = 100;
+    let codeUsed1 = false;
+    let codeUsed2 = false;
+    let codeUsed3 = false;
+    let codeUsed4 = false;
+    let codeUsed5 = false;
+    let codeUsed6 = false;
+    let codeUsed7 = false;
+    let rare = 0.01;
+    let epic = 0.001;
+    let mythic = 0.0001;
+    let legendary = 0.00001;
+    let secret = 0.000001;
+    let upgradePrice2 = 500;
+    let lastClaimTime = localStorage.getItem('lastClaimTime') ? new Date(localStorage.getItem('lastClaimTime')) : null;
+    const coinDisplay = document.getElementById('coin');
+    const coinImage = document.getElementById('coinImage');
+    const upgradeButton = document.getElementById('upgradeButton');
+    const upgradeButton2 = document.getElementById('upgradeButton2');
+    const upgradeInfoDisplay = document.getElementById('upgradeInfo');
+    const upgradeInfoDisplay2 = document.getElementById('upgradeInfo2');
+    const codeButton = document.getElementById('codeButton');
+    const codeMenu = document.getElementById('codeMenu');
+    const codeInput = document.getElementById('codeInput');
+    const codeSubmit = document.getElementById('codeSubmit');
+    const lastClaimDateKey = ('lastClaimDate');
+    const shop1 = document.getElementById('shop1');
+    const inventory1 = document.getElementById('inventory1');
+    const messageBox1 = document.getElementById('messageBox1');
+    const inventoryDisplay1 = document.getElementById('inventoryDisplay1');
+    const levelProgress = document.getElementById('level-progress');
+    const levelDisplay = document.getElementById('level');
+    const taskContainer = document.getElementById('taskContainer');
+    updateLevel();
+    loadCoins();
+    coinImage.addEventListener('click', (e) => {
+        updateLevel();
+        coinCount += clickValue;
+        coinDisplay.textContent = `🥥${coinCount}`;
+        saveCoins();
+    });
+
+    function toggleMiniButtons(button228) {
+      // Убираем мини-кнопки от всех кнопок
+      document.querySelectorAll('.button228.active').forEach(function(b) {
+        if (b !== button228) {
+          b.classList.remove('active');
+          b.querySelector('.mini-buttons').style.display = 'none';
+        }
+      });
+      // Переключаем мини-кнопки для выбранной кнопки
+      const miniButtons = button228.querySelector('.mini-buttons');
+      miniButtons.style.display = miniButtons.style.display === 'none' ? 'flex' : 'none';
+      button228.classList.toggle('active');
+    }
+    document.getElementById('taskButton').addEventListener('click', () => {
+      taskContainer.style.display = taskContainer.style.display === 'none' ? 'block' : 'none';
+    });
+// Обработчик для групп кнопок
+const taskButtonsGroups = [document.querySelectorAll('.taskButton1'), document.querySelectorAll('.taskButton2'), document.querySelectorAll('.taskButton3')];
+
+taskButtonsGroups.forEach(taskButtons => {
+  taskButtons.forEach(button => {
+    const buttonId = button.getAttribute('data-id');
+    // Проверяем состояние кнопки только один раз при загрузке страницы
+    const isButtonDisabled = localStorage.getItem(`button_${buttonId}`) === 'true';
+    if (isButtonDisabled) {
+      button.disabled = true;
+      button.textContent = 'Награда взята';
+    }
+    
+    button.addEventListener('click', function() {
+      const url = this.getAttribute('data-url');
+      this.textContent = 'В процессе получения кокосов';
+      window.open(url, '_blank');
+      this.disabled = true;
+      localStorage.setItem(`button_${buttonId}`, 'true');
+      setTimeout(() => {
+        this.textContent = 'Награда взята';
+        coinCount += 1000.0;
+        coinDisplay.textContent = `🥥${coinCount.toFixed(0)}`;
+        saveCoins();
+      }, 5000);
+    });
+  });
+});
+
+    function showCoins(e, amount) {
+      const coinElement = document.createElement('div');
+      coinElement.classList.add('coin1');
+      coinElement.innerText = `+${amount}`;
+      coinElement.style.left = `${e.clientX - 20}px`;
+      coinElement.style.top = `${e.clientY - 40}px`;
+      document.body.appendChild(coinElement);
+      setTimeout(() => {
+        coinElement.remove();
+      }, 500);
+    }
+    
+
+
+
+
+    const inventoryButton = document.getElementById('inventoryButton');
+    const inventory = document.getElementById('inventory');
+    const itemsContainer = document.getElementById('items');
+    let items = loadItems() || [];
+    coinImage.addEventListener('click', () => {
+      const randomNumber = Math.random();
+      let item;
+      updateInventory();
+      if (randomNumber < secret) {
+        item = {
+          type: 'особый',
+          count: 1,
+          image: 'особый.png'
+        };
+      } else if (randomNumber < secret + legendary) {
+        item = {
+          type: 'легендарный',
+          count: 1,
+          image: 'легендарный.png'
+        };
+      } else if (randomNumber < secret + legendary + mythic) {
+        item = {
+          type: 'мифический',
+          count: 1,
+          image: 'мифический.png'
+        };
+      } else if (randomNumber < secret + legendary + mythic + epic) {
+        item = {
+          type: 'эпический',
+          count: 1,
+          image: 'эпический.png'
+        };
+      } else if (randomNumber < secret + legendary + mythic + epic + rare) {
+        item = {
+          type: 'редкий',
+          count: 1,
+          image: 'редкий.png'
+        };
+      } else {
+        return; // Не выпал предмет
+      }
+      const existingItem = items.find(i => i.type === item.type);
+      if (existingItem) {
+        existingItem.count++;
+      } else {
+        items.push(item);
+      }
+      saveItems(items);
+    });
+    inventoryButton.addEventListener('click', () => {
+      inventory.style.display = inventory.style.display === 'none' ? 'block' : 'none';
+    });
+
+
+    const tooltip = document.createElement('div');
+tooltip.classList.add('tooltip'); // Применяем CSS класс
+document.body.appendChild(tooltip);
+
+// Словарь с текстами для каждого типа предмета (HTML tags are now escaped)
+const itemTexts = {
+  'особый': 'Факт про Ethereum!<br> Вторая по популярности и размеру<br> капитализации криптовалюта мира.<br> Несмотря на сравнительно небольшой возраст,<br> объем торгов эфириумом или эфиром,<br> как часто называют этот вид цифровых денег<br> на русском языке, достиг на данный <br>момент $44 млрд., намного превосходя все<br> остальные криптовалюты, за исключением<br> биткоина.Платежная система Ethereum<br> была запущена всередине 2015-го года. <br>За два с небольшим года криптовалюта<br> смогла уверенно выйти на второе<br> место, в некоторых сегментах<br> составляя уверенную конкуренцию<br> еще недавно казавшемуся недосягаемым<br> биткоину. Некоторые специалисты именно эфир<br> считают наиболее перспективным<br> видом виртуальных денег.<br><br> Скоро сюда можно будет ввести код для 10к монет',
+  'легендарный': 'Это легендарный предмет.<br>Здесь краткое описание.',
+  'мифический': 'Это мифический предмет.<br>Здесь краткое описание.',
+  'эпический': 'Это эпический предмет.<br>Здесь краткое описание.',
+  'редкий': 'Это редкий предмет.<br>Здесь краткое описание.',
+};
+
+function updateInventory() {
+  itemsContainer.innerHTML = '';
+  items.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.classList.add('item');
+
+    itemElement.addEventListener('click', (event) => {
+      const text = itemTexts[item.type];
+      tooltip.innerHTML = `${text}`;
+      //Accurate tooltip positioning
+      const rect = itemElement.getBoundingClientRect();
+      const x = 50;
+      const y = 50;
+      tooltip.style.left = 50; //Center horizontally
+      tooltip.style.top = 50; //Adjust vertical position as needed
+      tooltip.style.display = 'block';
+
+            //Hide tooltip on click outside
+            document.addEventListener('click', hideTooltip);
+    });
+
+
+    const itemImage = document.createElement('img');
+    itemImage.src = item.image;
+    itemElement.appendChild(itemImage);
+
+    const itemCount = document.createElement('span');
+    itemCount.textContent = `x${item.count}`;
+    itemElement.appendChild(itemCount);
+
+    itemsContainer.appendChild(itemElement);
+  });
+}
+
+function hideTooltip(e){
+  if(!e.target.classList.contains('item')){
+    tooltip.style.display = 'none';
+    document.removeEventListener('click', hideTooltip);
+  }
+}
+
+function saveItems(items) {
+  localStorage.setItem('items', JSON.stringify(items));
+}
+
+function loadItems() {
+  const storedItems = localStorage.getItem('items');
+  return storedItems ? JSON.parse(storedItems) : [];
+}
+
+
+    
+
+
+
+
+    document.getElementById('prokachka').addEventListener('click', function() {
+      window.location.href = 'http://127.0.0.1:5500/PROkachka.html';
+    });
+    document.getElementById('shopButton1').addEventListener('click', () => {
+            shop1.style.display = 'block';
+        });
+
+document.getElementById('inventoryButton1').addEventListener('click', () => {
+            inventory1.style.display = 'block';
+            updateInventoryDisplay1();
+        });
+
+document.getElementById('closeShopButton1').addEventListener('click', () => {
+            shop1.style.display = 'none';
+        });
+
+document.getElementById('closeInventoryButton1').addEventListener('click', () => {
+            inventory1.style.display = 'none';
+        });
+const skins = JSON.parse(localStorage.getItem('skins')) || []; // Загружаем инвентарь из localStorage
+
+function saveInventory() {
+    localStorage.setItem('skins', JSON.stringify(skins)); // Сохраняем инвентарь в localStorage
+}
+
+function updateInventoryDisplay1() {
+    inventoryDisplay1.innerHTML = '';
+    skins.forEach(skinSrc => {
+        const img = document.createElement('img');
+        img.src = skinSrc;
+        img.className = 'skin1 skin2 skin3 skin4 skin5 skin6 skin7 skin9 skin10 skin11 skin12 skin13'; // Объединяем классы
+        img.style.width = '50px';
+        img.addEventListener('click', () => {
+            document.getElementById('coinImage').src = skinSrc;
+        });
+        inventoryDisplay1.appendChild(img);
+    });
+}
+
+document.getElementById('inventoryButton1').addEventListener('click', () => {
+    inventory1.style.display = 'block';
+    updateInventoryDisplay1();
+});
+
+document.getElementById('closeShopButton1').addEventListener('click', () => {
+    shop1.style.display = 'none';
+});
+
+document.getElementById('closeInventoryButton1').addEventListener('click', () => {
+    inventory1.style.display = 'none';
+});
+
+function handleSkinPurchase(skinSrc, cost) {
+            if (skins.includes(skinSrc)) {
+                messageBox1.style.display = 'block';
+                messageBox1.textContent = "У Вас уже есть этот скин в инвентаре.";
+                return; // Прекращаем выполнение, если скин уже приобретён
+            }
+
+            if (coinCount >= cost) {
+                messageBox1.style.display = 'block';
+                messageBox1.textContent = `Хотите купить скин за ${cost}🥥?`;
+                const yesButton = document.createElement('button');
+                yesButton.textContent = "Да";
+                yesButton.addEventListener('click', () => {
+                    coinCount -= cost;
+                    skins.push(skinSrc);
+                    coinDisplay.textContent = `🥥${coinCount.toFixed(0)}`;
+                    saveInventory();
+                    messageBox1.style.display = 'none';
+                    updateInventoryDisplay1();
+                });
+                const noButton = document.createElement('button');
+                noButton.textContent = "Нет";
+                noButton.addEventListener('click', () => {
+                    messageBox1.style.display = 'none';
+                });
+                messageBox1.appendChild(yesButton);
+                messageBox1.appendChild(noButton);
+            } else {
+                alert("Недостаточно 🥥 для покупки.");
+            }
+        }
+
+// Используем один селектор для всех скинов и получаем цену из атрибута data-price
+document.querySelectorAll('img[class^="skin"]').forEach(skin => {
+    skin.addEventListener('click', () => {
+        const price = parseFloat(skin.dataset.price); // Используем dataset для получения цены
+        handleSkinPurchase(skin.src, price);
+    });
+});
+
+// Вызов функции для обновления инвентаря при загрузке страницы
+updateInventoryDisplay1();
+
+  </script>
 </body>
+
 </html>
